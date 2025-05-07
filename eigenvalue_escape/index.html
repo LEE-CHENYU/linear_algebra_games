@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eigenvalue Escape Room - Linear Algebra Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/RGBELoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.0/lib/browser/math.min.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Eigenvalue Escape Room</h1>
+            <div class="level-info">Room: <span id="room">1</span></div>
+            <div class="timer">Time: <span id="timer">00:00</span></div>
+        </div>
+        
+        <div class="game-area">
+            <div id="scene-container"></div>
+            
+            <div class="control-panel">
+                <div class="room-info">
+                    <h3>Current Room</h3>
+                    <div id="roomDescription">
+                        Find the eigenvalues of the matrix to unlock the door.
+                    </div>
+                    <div class="matrix-display">
+                        <h4>Matrix:</h4>
+                        <div id="matrixDisplay" class="matrix"></div>
+                    </div>
+                </div>
+                
+                <div class="eigenvalue-input">
+                    <h3>Enter Eigenvalues</h3>
+                    <div class="input-container">
+                        <label for="eigenvalue1">λ<sub>1</sub>:</label>
+                        <input type="number" id="eigenvalue1" step="0.1">
+                    </div>
+                    <div class="input-container">
+                        <label for="eigenvalue2">λ<sub>2</sub>:</label>
+                        <input type="number" id="eigenvalue2" step="0.1">
+                    </div>
+                    <div class="input-container" id="eigenvalue3Container">
+                        <label for="eigenvalue3">λ<sub>3</sub>:</label>
+                        <input type="number" id="eigenvalue3" step="0.1">
+                    </div>
+                    <button id="submitEigenvalues">Submit</button>
+                </div>
+                
+                <div class="eigenvector-input">
+                    <h3>Enter Eigenvector</h3>
+                    <div class="input-container">
+                        <label>For λ = <span id="selectedEigenvalue">?</span></label>
+                    </div>
+                    <div class="input-container">
+                        <label for="eigenvectorX">x:</label>
+                        <input type="number" id="eigenvectorX" step="0.1">
+                    </div>
+                    <div class="input-container">
+                        <label for="eigenvectorY">y:</label>
+                        <input type="number" id="eigenvectorY" step="0.1">
+                    </div>
+                    <div class="input-container" id="eigenvectorZContainer">
+                        <label for="eigenvectorZ">z:</label>
+                        <input type="number" id="eigenvectorZ" step="0.1">
+                    </div>
+                    <button id="submitEigenvector">Submit</button>
+                </div>
+                
+                <div class="hint-panel">
+                    <h3>Hints</h3>
+                    <p id="hintText">Try finding the characteristic polynomial first.</p>
+                    <button id="getHint">Get Hint</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>• Find the eigenvalues of the matrix to unlock the door</p>
+            <p>• Enter the corresponding eigenvector to reveal the path</p>
+            <p>• Use the eigenvalues and eigenvectors to solve puzzles</p>
+            <p>• Escape all rooms to complete the game</p>
+            <p>• Rotate view with mouse drag, zoom with scroll</p>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Achievement Unlocked!</h2>
+            <p id="modalMessage">You've found the eigenvalues!</p>
+            <button id="modalClose">Continue</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

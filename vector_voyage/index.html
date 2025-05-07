@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Voyage - Linear Algebra Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Vector Voyage</h1>
+            <div class="level-info">Level: <span id="level">1</span></div>
+            <div class="score-info">Score: <span id="score">0</span></div>
+        </div>
+        
+        <div class="game-area">
+            <div id="scene-container"></div>
+            
+            <div class="control-panel">
+                <div class="vector-controls">
+                    <h3>Ship Vector</h3>
+                    <div class="vector-input">
+                        <label for="vectorX">X:</label>
+                        <input type="number" id="vectorX" value="0" step="0.5">
+                        
+                        <label for="vectorY">Y:</label>
+                        <input type="number" id="vectorY" value="0" step="0.5">
+                        
+                        <label for="vectorZ">Z:</label>
+                        <input type="number" id="vectorZ" value="0" step="0.5">
+                        
+                        <button id="applyVector">Apply Vector</button>
+                    </div>
+                </div>
+                
+                <div class="operation-controls">
+                    <h3>Vector Operations</h3>
+                    <button id="addVector">Add Vector</button>
+                    <button id="subtractVector">Subtract Vector</button>
+                    <button id="scalarMultiply">Scalar Multiply</button>
+                    <input type="number" id="scalarValue" value="2" step="0.5">
+                    <button id="crossProduct">Cross Product</button>
+                </div>
+                
+                <div class="vector-visualization">
+                    <h3>Vector Visualization</h3>
+                    <div class="toggle-options">
+                        <button id="toggleGrid">Toggle Grid</button>
+                        <button id="toggleVectorTrails">Toggle Trails</button>
+                        <button id="toggleCoordinates">Toggle Coordinates</button>
+                    </div>
+                </div>
+                
+                <div class="mission-panel">
+                    <h3>Current Mission</h3>
+                    <div id="missionDescription">
+                        Navigate to the checkpoint using vector operations.
+                    </div>
+                    <div id="targetVector">
+                        Target: (<span id="targetX">0</span>, <span id="targetY">0</span>, <span id="targetZ">0</span>)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>Navigate your spaceship through 3D space using vector operations.</p>
+            <p>• Set vector components (X, Y, Z) and apply them to move</p>
+            <p>• Add vectors to combine movements</p>
+            <p>• Subtract vectors to change direction</p>
+            <p>• Multiply by scalars to change magnitude</p>
+            <p>• Use cross product for perpendicular movement</p>
+            <p>• Rotate view with mouse drag, zoom with scroll</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
